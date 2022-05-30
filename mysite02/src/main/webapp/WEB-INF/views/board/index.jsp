@@ -26,39 +26,19 @@
 						<th>조회수</th>
 						<th>작성일</th>
 						<th>&nbsp;</th>
-					</tr>				
+					</tr>		
+					<c:forEach items="${list}" var="board">
 					<tr>
-						<td>3</td>
+						<td><c:out value="${board.no} /></td>
 						<td style="text-align:left; padding-left:0px">
-							<a href="">세 번째 글입니다.</a>
+							<a href=""><c:out value="${board.g_no}" />번째 글입니다.</a>
 						</td>
-						<td>김잼민</td>
-						<td>3</td>
-						<td>2015-10-11 12:04:20</td>
+						<td><c:out value="${board.userName}" /></td>
+						<td><c:out value="${board.depth}" /></td>
+						<td><c:out value="${board.createdAt}" /></td>
 						<td><a href="" class="del">삭제</a></td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td style="text-align:left; padding-left:10px">
-							<img src='${pageContext.servletContext.contextPath }/assets/images/reply.png' />
-							<a href="">두 번째 글입니다.</a>
-						</td>
-						<td>안대혁</td>
-						<td>3</td>
-						<td>2015-10-02 12:04:12</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td  style="text-align:left; padding-left:20px">
-							<img src='${pageContext.servletContext.contextPath }/assets/images/reply.png' />
-							<a href="">첫 번째 글입니다.</a>
-						</td>
-						<td>안대혁</td>
-						<td>3</td>
-						<td>2015-09-25 07:24:32</td>
-						<td><a href="" class="del">삭제</a></td>
-					</tr>
+					</c:forEach>
 				</table>
 				
 				<!-- pager 추가 -->
