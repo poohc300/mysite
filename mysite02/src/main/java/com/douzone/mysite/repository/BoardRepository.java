@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.douzone.mysite.vo.BoardVo;
 
-public class BoardReppository {
+public class BoardRepository {
 
 	public List<BoardVo> findAll(){
 		List<BoardVo> list = new ArrayList<>();
@@ -128,6 +128,44 @@ public class BoardReppository {
 			int count = pstmt.executeUpdate();
 			result = count == 1;
 			
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		} finally {
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+		
+		return result;
+	}
+	public boolean update(BoardVo vo) {
+		boolean result = false;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+	
+			String sql =
+					" update board " + 
+					"    set title=?, contents=?" + 
+					"  where no=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getContents());
+			
+			
+			
+			int count = pstmt.executeUpdate();
+			result = count == 1;			
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
 		} finally {
