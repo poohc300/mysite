@@ -22,6 +22,6 @@ public class UpdateFormAction implements Action {
 		vo.setContents(contents);
 		
 		new BoardRepository().update(vo);
-		WebUtil.forward(request, response, "board/index");
+		WebUtil.forward(request, response, "board/updateform");
 	}
 }
