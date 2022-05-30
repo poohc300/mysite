@@ -4,6 +4,7 @@ public class BoardVo {
 	private Long no;
 	private String title;
 	private String contents;
+	private Long g_no;
 	private Long userName;
 	private String userNo;
 	private Long depth;
@@ -32,6 +33,12 @@ public class BoardVo {
 	}
 	public String getCreatedAt() {
 		return createdAt;
+	}
+	public Long getG_no() {
+		return g_no;
+	}
+	public void setG_no(Long g_no) {
+		this.g_no = g_no;
 	}
 	public void setTitle(String title) {
 		this.title = title;
