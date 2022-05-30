@@ -23,6 +23,13 @@
 		    <version>2.7.5</version>
 		</dependency>
 		
+		<!-- JSTL -->
+		<dependency>
+		    <groupId>jstl</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
+		</dependency>
+				
 		<!-- Servlet -->
 		<dependency>
 		    <groupId>javax.servlet</groupId>
@@ -54,7 +61,7 @@
 			    	<url>http://192.168.56.101:8080/manager/text</url>
 			    	<path>/mysite02</path>
 			    	<username>admin</username>
-			    	<password>1234</password>
+			    	<password>manager</password>
 			    </configuration>
 			</plugin>
 		</plugins>
