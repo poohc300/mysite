@@ -7,7 +7,28 @@ public class BoardVo {
 	private Long userName;
 	private Long userNo;
 	private String regDate;
+	private Long commentNo;
+	private String commentContents;
+	private String commentRegDate;
 	
+	public Long getCommentNo() {
+		return commentNo;
+	}
+	public String getCommentContents() {
+		return commentContents;
+	}
+	public String getCommentRegDate() {
+		return commentRegDate;
+	}
+	public void setCommentNo(Long commentNo) {
+		this.commentNo = commentNo;
+	}
+	public void setCommentContents(String commentContents) {
+		this.commentContents = commentContents;
+	}
+	public void setCommentRegDate(String commentRegDate) {
+		this.commentRegDate = commentRegDate;
+	}
 	public Long getNo() {
 		return no;
 	}
