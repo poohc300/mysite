@@ -35,7 +35,7 @@
 						<td><c:out value="1"/></td>
 						<td><c:out value="${vo.regDate} "/></td>
 						
-						<td><a href="${pageContext.request.contextPath }/board?a=deleteform&no=${vo.no }">삭제</a></td>
+						<td><a href="${pageContext.request.contextPath }/board?a=delete&no=${vo.no }">삭제</a></td>
 					</tr>
 					</c:forEach>
 				</table>
