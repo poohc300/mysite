@@ -5,7 +5,7 @@ public class BoardVo {
 	private String title;
 	private String contents;
 	private Long userName;
-	private String userNo;
+	private Long userNo;
 	private String regDate;
 	
 	public Long getNo() {
@@ -20,10 +20,13 @@ public class BoardVo {
 	public String getContents() {
 		return contents;
 	}
+	public void setUserNo(Long userNo) {
+		this.userNo = userNo;
+	}
 	public Long getUserName() {
 		return userName;
 	}
-	public String getUserNo() {
+	public Long getUserNo() {
 		return userNo;
 	}
 
@@ -39,9 +42,6 @@ public class BoardVo {
 	}
 	public void setUserName(Long userName) {
 		this.userName = userName;
-	}
-	public void setUserNo(String userNo) {
-		this.userNo = userNo;
 	}
 
 	public void setRegDate(String regDate) {

@@ -11,11 +11,17 @@
 		<jsp:include page="/WEB-INF/views/includes/header.jsp" />
 		<div id="content">
 			<div id="user">
-				<p class="jr-success">
-					회원가입을 축하합니다.
-					<br><br>
-					<a href="<%=request.getContextPath() %>/user?a=loginform">로그인하기</a>
-				</p>				
+				<form id="write-form" name="writeForm" method="post" action="<%=request.getContextPath() %>/board?a=write">
+					<label class="block-label" for="title">유저번호</label>
+					<input id="userNo" name="userNo" type="text" value="1">
+					
+					<label class="block-label" for="title">제목</label>
+					<input id="title" name="title" type="text" value="">
+
+					<label class="block-label" for="contents">내용</label>
+					<textarea id="contents" name="contents"  value=""></textarea>
+					<input type="submit" value="글쓰기">
+				</form>
 			</div>
 		</div>
 		<jsp:include page="/WEB-INF/views/includes/navigation.jsp" />

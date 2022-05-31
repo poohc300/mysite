@@ -7,7 +7,7 @@
 <head>
 <title>mysite</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<link href="${pageContext.servletContext.contextPath }/assets/css/board.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath() %>/assets/css/board.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div id="container">
@@ -27,7 +27,7 @@
 						<th>작성일</th>
 						<th>&nbsp;</th>
 					</tr>		
-					<c:forEach items="${list}" var="board">
+					<c:forEach items="${list}" var="comment">
 					<tr>
 						
 						<td><a href="" class="del">삭제</a></td>

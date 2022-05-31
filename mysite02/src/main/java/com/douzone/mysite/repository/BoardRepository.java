@@ -35,7 +35,7 @@ public class BoardRepository {
 				String title = rs.getString(2);
 				String contents = rs.getString(3);
 				String regDate = rs.getString(4);
-				String userNo = rs.getString(5);
+				Long userNo = rs.getLong(5);
 				
 				BoardVo vo = new BoardVo();
 				vo.setNo(no);
@@ -116,12 +116,14 @@ public class BoardRepository {
 			String sql =
 					" insert" +
 					"   into board" +
-					" values (null, ?, ?, now(), ?)";
+					" values (null, ?, ?, ?, now())";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setString(2, vo.getContents());
-			pstmt.setString(4, vo.getUserNo());
+			pstmt.setLong(3, vo.getUserNo());
+			//pstmt.setLong(3, 1);
+			System.out.println(vo.getUserNo().getClass().getName());
 			int count = pstmt.executeUpdate();
 			result = count == 1;
 			

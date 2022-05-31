@@ -11,7 +11,7 @@ public class UserActionFactory extends ActionFactory {
 		Action action = null;
 		
 		if("join".equals(actionName)) {
-			//action = new JoinAction();
+			action = new JoinAction();
 		} else if("".equals(actionName)) {
 			
 		} else {
