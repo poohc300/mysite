@@ -27,10 +27,15 @@
 						<th>작성일</th>
 						<th>&nbsp;</th>
 					</tr>		
-					<c:forEach items="${list}" var="board">
+					<c:forEach items="${list}" var="vo">
 					<tr>
+						<td><c:out value="${vo.no} "/></td>
+						<td><c:out value="${vo.title} "/></td>
+						<td><c:out value="${vo.userNo} "/></td>
+						<td><c:out value="1"/></td>
+						<td><c:out value="${vo.regDate} "/></td>
 						
-						<td><a href="" class="del">삭제</a></td>
+						<td><a href="${pageContext.request.contextPath }/board?a=deleteform&no=${vo.no }">삭제</a></td>
 					</tr>
 					</c:forEach>
 				</table>

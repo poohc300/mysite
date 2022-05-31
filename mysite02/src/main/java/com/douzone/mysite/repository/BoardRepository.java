@@ -36,7 +36,8 @@ public class BoardRepository {
 				String contents = rs.getString(3);
 				String regDate = rs.getString(4);
 				Long userNo = rs.getLong(5);
-				
+
+				System.out.println(regDate);
 				BoardVo vo = new BoardVo();
 				vo.setNo(no);
 				vo.setTitle(title);
