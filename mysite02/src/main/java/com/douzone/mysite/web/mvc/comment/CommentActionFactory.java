@@ -1,10 +1,9 @@
-package com.douzone.mysite.web.mvc.guestbook;
+package com.douzone.mysite.web.mvc.comment;
 
 import com.douzone.web.mvc.Action;
 import com.douzone.web.mvc.ActionFactory;
 
-public class GuestbookActionFactory extends ActionFactory {
-
+public class CommentActionFactory extends ActionFactory {
 
 	@Override
 	public Action getAction(String actionName) {
@@ -16,11 +15,12 @@ public class GuestbookActionFactory extends ActionFactory {
 			action = new DeleteFormAction();
 		} else if("add".equals(actionName)) {
 			action = new AddAction();
+		} else if("updateform".equals(actionName)) {
+			action = new UpdateFormAction();
 		} else {
 			action = new IndexAction();
 		}
 		
 		return action;
 	}
-
 }

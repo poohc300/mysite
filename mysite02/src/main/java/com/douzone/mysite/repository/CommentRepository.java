@@ -7,12 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.douzone.mysite.vo.BoardVo;
 
-public class BoardRepository {
+import com.douzone.mysite.vo.CommentVo;
 
-	public List<BoardVo> findAll(){
-		List<BoardVo> list = new ArrayList<>();
+public class CommentRepository {
+	public List<CommentVo> findAll(){
+		List<CommentVo> list = new ArrayList<>();
 		
 
 		Connection conn = null;
@@ -23,8 +23,8 @@ public class BoardRepository {
 			conn = getConnection();
 			
 			String sql =
-				"   select no, title, contents, date_format(reg_date, '%Y/%m/%d %H:%i:%s') as reg_date, user_no" +
-				"     from board" +
+				"   select no, content, user_no, board_no, date_format(reg_date, '%Y/%m/%d %H:%i:%s') as reg_date" +
+				"     from comment" +
 				" order by reg_date desc";
 			pstmt = conn.prepareStatement(sql);
 			
@@ -32,17 +32,17 @@ public class BoardRepository {
 			
 			while(rs.next()) {
 				Long no = rs.getLong(1);
-				String title = rs.getString(2);
-				String contents = rs.getString(3);
-				String regDate = rs.getString(4);
-				String userNo = rs.getString(5);
+				String contents = rs.getString(2);
+				Long userNo = rs.getLong(3);
+				Long boardNo = rs.getLong(4);
+				String regDate = rs.getString(5);
 				
-				BoardVo vo = new BoardVo();
+				CommentVo vo = new CommentVo();
 				vo.setNo(no);
-				vo.setTitle(title);
 				vo.setContents(contents);
-				vo.setRegDate(regDate);
 				vo.setUserNo(userNo);
+				vo.setBoardNo(boardNo);
+				vo.setRegDate(regDate);
 				
 				list.add(vo);
 			}
@@ -68,7 +68,7 @@ public class BoardRepository {
 		return list;
 	}
 	
-	public boolean delete(BoardVo vo) {
+	public boolean delete(CommentVo vo) {
 		boolean result = false;
 
 		Connection conn = null;
@@ -78,7 +78,7 @@ public class BoardRepository {
 			
 			String sql =
 					" delete" +
-					"   from board" +
+					"   from comment" +
 					"  where no=?";
 			pstmt = conn.prepareStatement(sql);
 			
@@ -105,7 +105,7 @@ public class BoardRepository {
 		return result;		
 	}
 	
-	public boolean insert(BoardVo vo) {
+	public boolean insert(CommentVo vo) {
 		boolean result = false;
 
 		Connection conn = null;
@@ -115,13 +115,13 @@ public class BoardRepository {
 			
 			String sql =
 					" insert" +
-					"   into board" +
-					" values (null, ?, ?, now(), ?)";
+					"   into comment" +
+					" values (null, ?, ?, ?, now())";
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, vo.getTitle());
-			pstmt.setString(2, vo.getContents());
-			pstmt.setString(4, vo.getUserNo());
+			pstmt.setString(1, vo.getContents());
+			pstmt.setLong(2, vo.getUserNo());
+			pstmt.setLong(3, vo.getBoardNo());
 			int count = pstmt.executeUpdate();
 			result = count == 1;
 			
@@ -142,7 +142,7 @@ public class BoardRepository {
 		
 		return result;
 	}
-	public boolean update(BoardVo vo) {
+	public boolean update(CommentVo vo) {
 		boolean result = false;
 
 		Connection conn = null;
@@ -151,13 +151,12 @@ public class BoardRepository {
 			conn = getConnection();
 	
 			String sql =
-					" update board " + 
-					"    set title=?, contents=?" + 
+					" update comment " + 
+					"    contents=?" + 
 					"  where no=?";
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, vo.getTitle());
-			pstmt.setString(2, vo.getContents());
+			pstmt.setString(1, vo.getContents());
 			
 			
 			

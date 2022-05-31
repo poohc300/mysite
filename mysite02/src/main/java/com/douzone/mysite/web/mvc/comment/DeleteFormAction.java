@@ -1,4 +1,4 @@
-package com.douzone.mysite.web.mvc.guestbook;
+package com.douzone.mysite.web.mvc.comment;
 
 import java.io.IOException;
 
@@ -12,6 +12,6 @@ import com.douzone.web.util.WebUtil;
 public class DeleteFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		WebUtil.forward(request, response, "guestbook/deleteform");
+		WebUtil.forward(request, response, "board/deleteform");
 	}
 }
